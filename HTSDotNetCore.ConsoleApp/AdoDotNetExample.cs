@@ -53,9 +53,9 @@ namespace HTSDotNetCore.ConsoleApp
             connection.Open();
 
             string query = @"INSERT INTO [dbo].[tbl_blog]
-           ([blogTitle]
+            [blogTitle]
            ,[blogAuthor]
-           ,[blogContent])
+           ,[blogContent]
      VALUES
            (@blogTitle,
 			@blogAuthor,
@@ -69,6 +69,66 @@ namespace HTSDotNetCore.ConsoleApp
             string msg = result > 0 ? "Blog created" : "Creation Failed";
             Console.WriteLine(msg);
             connection.Close();
+        }
+
+        public void Update(int id,String title,String author,String content)
+        {
+            SqlConnection sqlConnection = new SqlConnection(_sqlConnectionBuilder.ConnectionString);
+            sqlConnection.Open();
+            string query = @"UPDATE [dbo].[tbl_blog]
+     SET [blogTitle] = @blogTitle
+        ,[blogAuthor] = @blogAuthor
+        ,[blogContent] = @blogContent
+     WHERE [blogId] = @blogId";
+
+            SqlCommand cmd = new SqlCommand(query, sqlConnection);
+            cmd.Parameters.AddWithValue("@blogId", id);
+            cmd.Parameters.AddWithValue("@blogTitle", title);
+            cmd.Parameters.AddWithValue("@blogAuthor", author);
+            cmd.Parameters.AddWithValue("@blogContent", content);
+            int result = cmd.ExecuteNonQuery();
+            string msg = result > 0 ? $"BLogID -> {id} is Updated" : "Updatation Failed";
+            Console.WriteLine(msg);
+            sqlConnection.Close();
+        }
+
+        public void Edit(int id)
+        {
+            SqlConnection sqlConnection = new SqlConnection(_sqlConnectionBuilder.ConnectionString);
+            sqlConnection.Open();
+            string query = "SELECT * FROM tbl_blog WHERE [blogId] = @blogId";
+            SqlCommand cmd = new SqlCommand(query, sqlConnection);
+            cmd.Parameters.AddWithValue("@blogId", id);
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            sqlDataAdapter.Fill(dt);
+
+            sqlConnection.Close();
+            if(dt.Rows.Count == 0)
+            {
+                Console.WriteLine($"Data associated with id {id} is not found !");
+                return;
+            }
+            
+            DataRow dr = dt.Rows[0];
+            Console.WriteLine("Blog ID =>" + dr["blogId"]);
+            Console.WriteLine("Blog Author =>" + dr["blogAuthor"]);
+            Console.WriteLine("Blog Title =>" + dr["blogTitle"]);
+            Console.WriteLine("Blog Content =>" + dr["blogContent"]);
+
+        }
+
+        public void Delete(int id)
+        {
+            SqlConnection sqlConnection = new SqlConnection(_sqlConnectionBuilder.ConnectionString);
+            sqlConnection.Open();
+            string query = @"DELETE FROM [dbo].[tbl_blog]
+      WHERE [blogId] = @blogId";
+            SqlCommand cmd = new SqlCommand(query, sqlConnection);
+            cmd.Parameters.AddWithValue("@blogId", id);
+            int result = cmd.ExecuteNonQuery();
+            string msg = result > 0 ? $"BlogId {id} is deleted successfully..." : "Deletion Failed !";
+            Console.WriteLine($"{result} => {msg}");
         }
     }
 }
