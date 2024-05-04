@@ -7,18 +7,9 @@ namespace HTSDotNetCore.ConsoleApp
 {
     internal class AdoDotNetExample
     {
-
-
-        private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
-        {
-            DataSource = "nick", //server name
-            InitialCatalog = "DotNetBatch4", // database name
-            UserID = "sa",
-            Password = "sasa@123"
-        };
         public void Read()
         {   
-            SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection connection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
 
             connection.Open();
             string query = "SELECT * FROM tbl_blog";
@@ -39,17 +30,17 @@ namespace HTSDotNetCore.ConsoleApp
 
             foreach (DataRow dr in dt.Rows)
             {
-                Console.WriteLine("blog_id" + dr["blogId"]);
-                Console.WriteLine("blog_id" + dr["blogTitle"]);
-                Console.WriteLine("blog_id" + dr["blogAuthor"]);
-                Console.WriteLine("blog_id" + dr["blogContent"]);
+                Console.WriteLine("blog_id " + dr["blogId"]);
+                Console.WriteLine("blog_id " + dr["blogTitle"]);
+                Console.WriteLine("blog_id " + dr["blogAuthor"]);
+                Console.WriteLine("blog_id " + dr["blogContent"]);
                 Console.WriteLine("---------------------");
             }
         }
 
         public void Create(String title,String author, String content)
         {
-            SqlConnection SqlConnection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection SqlConnection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             SqlConnection.Open();
 
             string query = @"INSERT INTO [dbo].[tbl_blog]
@@ -73,7 +64,7 @@ namespace HTSDotNetCore.ConsoleApp
 
         public void Update(int id,String title,String author,String content)
         {
-            SqlConnection sqlConnection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection sqlConnection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             sqlConnection.Open();
             string query = @"UPDATE [dbo].[tbl_blog]
      SET [blogTitle] = @blogTitle
@@ -94,7 +85,7 @@ namespace HTSDotNetCore.ConsoleApp
 
         public void Edit(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection sqlConnection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             sqlConnection.Open();
             string query = "SELECT * FROM tbl_blog WHERE [blogId] = @blogId";
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
@@ -120,7 +111,7 @@ namespace HTSDotNetCore.ConsoleApp
 
         public void Delete(int id)
         {
-            SqlConnection sqlConnection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            SqlConnection sqlConnection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             sqlConnection.Open();
             string query = @"DELETE FROM [dbo].[tbl_blog]
       WHERE [blogId] = @blogId";
