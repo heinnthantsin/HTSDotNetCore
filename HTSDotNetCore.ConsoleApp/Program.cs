@@ -3,6 +3,7 @@
 
 
 //Ado DotNet Example
+
 //AdoDotNetExample adoDotNet = new AdoDotNetExample();
 //adoDotNet.Read();
 //adoDotNet.Create("Create Testiing new", "Author Testing new", "Content Testing new");
@@ -13,6 +14,11 @@ adoDotNet.Delete(7);*/
 
 //Dapper Example
 
-DapperExample dapperExample = new DapperExample();  
-dapperExample.Run();
+/*DapperExample dapperExample = new DapperExample();  
+dapperExample.Run();*/
+
+
+//EFCoreExample 
+EFCoreExample efEg = new EFCoreExample();
+efEg.Run();
 Console.ReadKey(true); 

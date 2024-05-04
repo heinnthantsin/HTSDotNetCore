@@ -14,6 +14,7 @@ internal static class SqlConnectionStrings
         DataSource = "nick", //server name
         InitialCatalog = "DotNetBatch4", // database name
         UserID = "sa",
-        Password = "sasa@123"
+        Password = "sasa@123",
+        TrustServerCertificate = true
     };
 }
