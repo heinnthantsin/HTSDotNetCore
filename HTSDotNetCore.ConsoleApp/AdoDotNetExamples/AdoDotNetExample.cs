@@ -1,14 +1,15 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 using System.Text;
+using HTSDotNetCore.ConsoleApp.Configs;
 
 
-namespace HTSDotNetCore.ConsoleApp
+namespace HTSDotNetCore.ConsoleApp.AdoDotNetExamples
 {
     internal class AdoDotNetExample
     {
         public void Read()
-        {   
+        {
             SqlConnection connection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
 
             connection.Open();
@@ -38,7 +39,7 @@ namespace HTSDotNetCore.ConsoleApp
             }
         }
 
-        public void Create(String title,String author, String content)
+        public void Create(string title, string author, string content)
         {
             SqlConnection SqlConnection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             SqlConnection.Open();
@@ -62,7 +63,7 @@ namespace HTSDotNetCore.ConsoleApp
             SqlConnection.Close();
         }
 
-        public void Update(int id,String title,String author,String content)
+        public void Update(int id, string title, string author, string content)
         {
             SqlConnection sqlConnection = new SqlConnection(SqlConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             sqlConnection.Open();
@@ -95,12 +96,12 @@ namespace HTSDotNetCore.ConsoleApp
             sqlDataAdapter.Fill(dt);
 
             sqlConnection.Close();
-            if(dt.Rows.Count == 0)
+            if (dt.Rows.Count == 0)
             {
                 Console.WriteLine($"Data associated with id {id} is not found !");
                 return;
             }
-            
+
             DataRow dr = dt.Rows[0];
             Console.WriteLine("Blog ID =>" + dr["blogId"]);
             Console.WriteLine("Blog Author =>" + dr["blogAuthor"]);

@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{36
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch4RestApi", "DotNetTrainingBatch4RestApi\DotNetTrainingBatch4RestApi.csproj", "{C8D3F0B4-CC29-4B06-82BD-85E19531971F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{3BFEE537-0AA7-490B-ACBE-CFE3EE95CEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BFEE537-0AA7-490B-ACBE-CFE3EE95CEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BFEE537-0AA7-490B-ACBE-CFE3EE95CEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D3F0B4-CC29-4B06-82BD-85E19531971F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D3F0B4-CC29-4B06-82BD-85E19531971F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D3F0B4-CC29-4B06-82BD-85E19531971F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D3F0B4-CC29-4B06-82BD-85E19531971F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

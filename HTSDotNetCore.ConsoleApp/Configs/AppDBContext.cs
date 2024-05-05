@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HTSDotNetCore.ConsoleApp.Dtos;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HTSDotNetCore.ConsoleApp
+namespace HTSDotNetCore.ConsoleApp.Configs
 {
     internal class AppDBContext : DbContext
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace HTSDotNetCore.ConsoleApp;
+namespace HTSDotNetCore.ConsoleApp.Dtos;
 
 [Table("tbl_blog")]
 public class BlogDto

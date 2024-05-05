@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HTSDotNetCore.ConsoleApp;
+namespace HTSDotNetCore.ConsoleApp.Configs;
 
 internal static class SqlConnectionStrings
 {

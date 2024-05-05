@@ -1,4 +1,4 @@
-﻿using HTSDotNetCore.ConsoleApp;
+﻿using HTSDotNetCore.ConsoleApp.EFCoreExamples;
 
 
 

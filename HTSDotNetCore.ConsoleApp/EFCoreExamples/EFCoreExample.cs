@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HTSDotNetCore.ConsoleApp.Configs;
+using HTSDotNetCore.ConsoleApp.Dtos;
 
-namespace HTSDotNetCore.ConsoleApp
+namespace HTSDotNetCore.ConsoleApp.EFCoreExamples
 {
     internal class EFCoreExample
-    {   
+    {
         private readonly AppDBContext db = new AppDBContext();
         public void Run()
         {
@@ -24,7 +26,7 @@ namespace HTSDotNetCore.ConsoleApp
             var list = db.Blogs.ToList();
             foreach (var item in list)
             {
-                Console.WriteLine("Blog Id => "+item.BlogId);
+                Console.WriteLine("Blog Id => " + item.BlogId);
                 Console.WriteLine("Blog Title => " + item.BlogTitle);
                 Console.WriteLine("Blog Author => " + item.BlogAuthor);
                 Console.WriteLine("Blog Content => " + item.BlogContent);
@@ -36,7 +38,7 @@ namespace HTSDotNetCore.ConsoleApp
         private void Edit(int id)
         {
             var item = db.Blogs.FirstOrDefault(blog => blog.BlogId == id);
-            if(item is null)
+            if (item is null)
             {
                 Console.WriteLine("No Data Found!");
                 return;
@@ -49,7 +51,7 @@ namespace HTSDotNetCore.ConsoleApp
             Console.WriteLine("");
         }
 
-        private void Create(String author,String title,String content)
+        private void Create(string author, string title, string content)
         {
             var item = new BlogDto
             {
@@ -59,21 +61,21 @@ namespace HTSDotNetCore.ConsoleApp
             };
             db.Blogs.Add(item);
             var res = db.SaveChanges();
-            String msg = res > 0 ? "Saving Successful" : "Saving Failed";
+            string msg = res > 0 ? "Saving Successful" : "Saving Failed";
             Console.WriteLine(msg);
 
         }
 
-        private void Update(int id,String title, String content,String author) 
+        private void Update(int id, string title, string content, string author)
         {
             var item = db.Blogs.FirstOrDefault(b => b.BlogId == id);
-            if(item is null) { Console.WriteLine("No Data Found!"); return; }
+            if (item is null) { Console.WriteLine("No Data Found!"); return; }
 
             item.BlogTitle = title;
-            item.BlogAuthor = author;   
+            item.BlogAuthor = author;
             item.BlogContent = content;
             int res = db.SaveChanges();
-            String msg = res > 0 ? "Upadated Successfully..." : "Updatation Failed!";
+            string msg = res > 0 ? "Upadated Successfully..." : "Updatation Failed!";
             Console.WriteLine(msg);
         }
 
@@ -83,7 +85,7 @@ namespace HTSDotNetCore.ConsoleApp
             if (item is null) { Console.WriteLine("No Data Found !"); return; }
             db.Blogs.Remove(item);
             int res = db.SaveChanges();
-            String msg = res > 0 ? "Deleted Successsfully..." : "Deletion Failed";
+            string msg = res > 0 ? "Deleted Successsfully..." : "Deletion Failed";
             Console.WriteLine(msg);
         }
     }
